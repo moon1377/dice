@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    ports:
+      - "9999:5000"
+    environment:
+      - DICES_SIDES=${DICE_SIDES}
