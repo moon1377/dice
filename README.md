@@ -1,50 +1,12 @@
-# Practica: Flask Dice Roller
+## Capturas de la pantalla de `http://localhost:8888` y del health
+<img width="1918" height="1012" alt="Captura de pantalla 2025-10-30 200058" src="https://github.com/user-attachments/assets/80a72ec0-1660-4cd3-b2d4-7dc6179331e2" />
+<img width="1918" height="996" alt="Captura de pantalla 2025-10-30 200120" src="https://github.com/user-attachments/assets/3b7c771a-056e-4b3d-9a86-f638e19d5d87" />
 
-Esta actividad replica la dinamica de "Flask Cats" pero aplicada a un dado virtual. El objetivo es practicar Flask, trabajo con variables de entorno y dockerizacion basica.
+## Breve explicación del `-e DICE_SIDES=...`
+Cuando ejecutas el contenedor docker con `-e DICE_SIDES=...` lo que hace es definir el valor que le pongamos, por ejemplo '-e DICE_SIDES=20' pone
+que el dado sea por defecto 20 caras.
 
-## Objetivo
 
-- Mostrar una pagina web con el resultado de tirar un dado.
-- Permitir configurar el numero de caras mediante la variable de entorno `DICE_SIDES` (por defecto 6).
-- Ejecutar la app dentro de Docker escuchando en el puerto 5000 y publicandolo en 8888.
-
-## Material incluido
-
-- `app.py` con la estructura Flask y TODOs listos para completar.
-- `templates/index.html` con el template para la vista principal.
-- `requirements.txt` con la dependencia necesaria.
-
-## Tareas
-
-1. **Completar la app**  
-   - Implementa `get_sides()` leyendo `DICE_SIDES` y validando que sea un entero >= 2 (usa 6 como fallback).  
-   - En la vista `/` genera la tirada con `random.randint(1, sides)`.  
-   - Mantener el endpoint `/health` tal como esta.
-
-2. **Crear el Dockerfile**  
-   - Imagen base: `python:3.14.0-alpine3.22` (o `3.13` si la 3.14 no esta disponible en tu equipo).  
-   - Copia `requirements.txt`, instala dependencias y luego copia el resto del codigo.  
-   - Expone el puerto `5000`.  
-   - Arranca con `CMD ["python", "app.py"]`.
-
-3. **Construir la imagen**
-
-   ```bash
-   docker build -t dice_app .
-   ```
-
-4. **Ejecutar el contenedor**
-
-   ```8888:5000  puerto
-   ```
-
-5. **Probar la variable de entorno**
-
-   ```bash
-   -e DICE_SIDES=20 
-   ```
-
-   Comprueba en `http://localhost:8888` que la pagina indica "Dado de 20 caras" y que las tiradas van de 1 a 20.
 
 ## Entrega
 
